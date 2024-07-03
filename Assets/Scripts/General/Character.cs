@@ -69,7 +69,7 @@ public class Character : MonoBehaviour, ISaveable
         if (currentHealth - attacker.damage > 0)
         {
             currentHealth = currentHealth - attacker.damage;
-            //触发受伤
+            //触发受伤,玩家碰到敌人，玩家受伤，但是敌人不受伤
             OnTakeDamage?.Invoke(attacker.transform);
         }
         else

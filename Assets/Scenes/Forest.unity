@@ -3907,7 +3907,7 @@ Tilemap:
       - {fileID: -1230427915, guid: cd051fe849dbf7448932ebc53374cb99, type: 3}
       - {fileID: -1106006032, guid: cd051fe849dbf7448932ebc53374cb99, type: 3}
       - {fileID: -1500226787, guid: cd051fe849dbf7448932ebc53374cb99, type: 3}
-      m_AnimationSpeed: 5
+      m_AnimationSpeed: 5.0000005
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 12, y: -2, z: 0}
@@ -4039,7 +4039,7 @@ Tilemap:
       - {fileID: -1230427915, guid: cd051fe849dbf7448932ebc53374cb99, type: 3}
       - {fileID: -1106006032, guid: cd051fe849dbf7448932ebc53374cb99, type: 3}
       - {fileID: -1500226787, guid: cd051fe849dbf7448932ebc53374cb99, type: 3}
-      m_AnimationSpeed: 5.0000005
+      m_AnimationSpeed: 5
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 12, y: 1, z: 0}
@@ -11735,6 +11735,14 @@ PrefabInstance:
     - target: {fileID: 2774385069807638531, guid: 0ef7ea7ddb92ae74facaca8e1f7f370c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5787819768384124567, guid: 0ef7ea7ddb92ae74facaca8e1f7f370c, type: 3}
+      propertyPath: chaseSpeed
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5787819768384124567, guid: 0ef7ea7ddb92ae74facaca8e1f7f370c, type: 3}
+      propertyPath: normalSpeed
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 5835897553268606970, guid: 0ef7ea7ddb92ae74facaca8e1f7f370c, type: 3}
       propertyPath: m_Name

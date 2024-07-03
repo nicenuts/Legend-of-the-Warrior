@@ -153,7 +153,7 @@ public class Enemy : MonoBehaviour
     public void OnTakeDamage(Transform attackTrans)
     {
         attacker = attackTrans;
-        //转身
+        //攻击的方向，敌人受伤的受伤被击退的方向 应该和玩家攻击的方向相反
         if (attackTrans.position.x - transform.position.x < 0)
         {
             transform.localScale = new Vector3(1, 1, 1);
@@ -184,7 +184,7 @@ public class Enemy : MonoBehaviour
 
     public void OnDie()
     {
-        gameObject.layer = 2;
+        gameObject.layer = 2;     //死亡的时候修改野猪的碰撞图层，不然人物碰到野猪的碰撞体依然会受伤
         anim.SetBool("dead", true);
         isDead = false;
     }
