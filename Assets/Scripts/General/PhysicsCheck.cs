@@ -6,6 +6,9 @@ using UnityEngine;
 public class PhysicsCheck : MonoBehaviour
 {
     private CapsuleCollider2D coll;
+    private PlayerController playerController;
+    private Rigidbody2D rb;
+
     [Header("检测参数")]
     // public bool manual;
     public Vector2 bottomOffset;
@@ -14,10 +17,14 @@ public class PhysicsCheck : MonoBehaviour
     public float checkRadius;
     public LayerMask groundLayer;
 
+    public bool isPlayer;  //因为敌人是不需要蹬墙跳这个动作的
+
     [Header("状态")]
     public bool isGround;
     public bool touchLeftWall;
     public bool touchRightWall;
+    public bool onWall;   //蹬墙跳的时候，判断是否在墙上
+
     void Start()
     {
 
@@ -25,6 +32,12 @@ public class PhysicsCheck : MonoBehaviour
     void Awake()
     {
         coll = GetComponent<CapsuleCollider2D>();
+        if(isPlayer)
+        {
+            playerController = GetComponent<PlayerController>();
+            rb = GetComponent<Rigidbody2D>();
+        }
+
         // if(!manual)
         // {
         //     rightOffset = new Vector2(coll.bounds.size.x/2 + coll.offset.x, coll.offset.y);
@@ -44,6 +57,23 @@ public class PhysicsCheck : MonoBehaviour
         //检测墙面
         touchLeftWall = Physics2D.OverlapCircle((Vector2)transform.position + leftOffset, checkRadius, groundLayer);
         touchRightWall = Physics2D.OverlapCircle((Vector2)transform.position + rightOffset, checkRadius, groundLayer);
+
+        //蹬墙跳检测
+        if(isPlayer)
+        {
+            //if(((touchLeftWall && playerController.inputDirection.x<0f) || 
+            //    (touchRightWall && playerController.inputDirection.x>0f))   &&   rb.velocity.y<0f  )
+            if((touchLeftWall || touchRightWall )   &&   rb.velocity.y<0f  )
+            {
+                onWall = true;
+            }
+            else
+            {
+                onWall = false;
+            }
+        }
+
+
     }
     private void OnDrawGizmosSelected()
     {

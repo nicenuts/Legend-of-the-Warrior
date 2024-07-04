@@ -141,16 +141,16 @@ public class PlayerController : MonoBehaviour
     //跳跃
     private void jump(InputAction.CallbackContext context)
     {
-        if (physicsCheck.isGround == true)
+        if (physicsCheck.isGround || physicsCheck.onWall)
         {
             rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
 
+            GetComponent<AudioDefination>()?.PlayAudioClip();   //播放跳跃的音效,只有跳跃的时候才播放
+            
             //打断滑铲协程
             isSlide = false;
             StopAllCoroutines();
         }
-
-        GetComponent<AudioDefination>()?.PlayAudioClip();   //播放跳跃的音效
     }
 
     //攻击
@@ -163,6 +163,10 @@ public class PlayerController : MonoBehaviour
     //滑铲
     private void Slide(InputAction.CallbackContext context)  //滑铲的动画
     {
+        if(currentCharacter.currentPower<currentCharacter.sildePowerCost)
+        {
+            return;  //当前能量值不满足滑动所需能量，不执行滑动
+        }
         float slideDirection = transform.localScale.x;   //滑动方向
         if (!isSlide && physicsCheck.isGround && currentCharacter.currentPower >= 0)
         {
@@ -239,7 +243,10 @@ public class PlayerController : MonoBehaviour
         //判断人物是否在地面，如果在地面就使用normal材质，否则就使用wall材质
         coll.sharedMaterial = physicsCheck.isGround ? normal : wall;
 
+        if(physicsCheck.onWall)
+        {
+            //蹬墙跳的滑墙下滑速度
+            rb.velocity = new Vector2(0, rb.velocity.y/4);  
+        }
     }
-
-
 }
