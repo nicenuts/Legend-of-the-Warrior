@@ -19,7 +19,7 @@ public class DataManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance == null)             //单例模式
+        if (instance == null) //单例模式，保证类的唯一实例性，并提供一个全局访问点
         {
             instance = this;
         }

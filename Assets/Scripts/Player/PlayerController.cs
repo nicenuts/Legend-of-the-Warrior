@@ -141,9 +141,9 @@ public class PlayerController : MonoBehaviour
     //跳跃
     private void jump(InputAction.CallbackContext context)
     {
-        if (physicsCheck.isGround || physicsCheck.onWall)
+        if (physicsCheck.isGround || physicsCheck.onWall)   //正常跳跃
         {
-            rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
+            rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);  //向上的力
 
             GetComponent<AudioDefination>()?.PlayAudioClip();   //播放跳跃的音效,只有跳跃的时候才播放
             
@@ -175,7 +175,7 @@ public class PlayerController : MonoBehaviour
             //滑动结束后的目标点
             Vector3 targetPos = new Vector3(transform.position.x + slideDistance * slideDirection, transform.position.y);
 
-            gameObject.layer = LayerMask.NameToLayer("Enemy");  //实现在滑铲时，与敌人碰撞不受伤害
+            //gameObject.layer = LayerMask.NameToLayer("Enemy");  //实现在滑铲时，与敌人碰撞不受伤害
             StartCoroutine(TriggerSlider(targetPos, slideDirection));
 
             currentCharacter.OnSlidePowerCost(currentCharacter.sildePowerCost);  //滑铲动作消耗能量

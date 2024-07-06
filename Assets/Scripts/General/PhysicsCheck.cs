@@ -63,9 +63,11 @@ public class PhysicsCheck : MonoBehaviour
         {
             //if(((touchLeftWall && playerController.inputDirection.x<0f) || 
             //    (touchRightWall && playerController.inputDirection.x>0f))   &&   rb.velocity.y<0f  )
-            if((touchLeftWall || touchRightWall )   &&   rb.velocity.y<0f  )
+
+            //不用判断输入的方向的左右，判断人物朝向即可
+            if(((touchLeftWall && transform.localScale.x<0) || (touchRightWall && transform.localScale.x>0) )   &&   rb.velocity.y<0f  )  
             {
-                onWall = true;
+                onWall = true;     //滑墙
             }
             else
             {

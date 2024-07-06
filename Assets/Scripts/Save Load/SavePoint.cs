@@ -9,6 +9,7 @@ public class SavePoint : MonoBehaviour,Iinteractable
 
     [Header("变量参数")]
     public SpriteRenderer spriteRenderer;
+    public GameObject lightObj;
     public Sprite darkSprite;
     public Sprite lightSprite;
     public bool isDone;
@@ -16,6 +17,7 @@ public class SavePoint : MonoBehaviour,Iinteractable
     private void OnEnable()
     {
         spriteRenderer.sprite = isDone ? lightSprite : darkSprite;
+        lightObj.SetActive(isDone);
     }
 
     private void OnDisable()
@@ -29,6 +31,7 @@ public class SavePoint : MonoBehaviour,Iinteractable
         {
             isDone = true;
             spriteRenderer.sprite = lightSprite;
+            lightObj.SetActive(true);
 
             this.gameObject.tag = "Untagged";
 
