@@ -1389,53 +1389,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &449810230
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 449810232}
-  - component: {fileID: 449810231}
-  m_Layer: 0
-  m_Name: BGM
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &449810231
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 449810230}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4cb3699f307aac4a96a1c86b76589fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playAudioEvent: {fileID: 11400000, guid: 2f02a41debfd9ce4399a3afb1b866fbb, type: 2}
-  audioClip: {fileID: 8300000, guid: b90b002a8cd137243a4b5e955f3b220f, type: 3}
-  playOnEnable: 1
---- !u!4 &449810232
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 449810230}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &801154466
 GameObject:
   m_ObjectHideFlags: 0
@@ -3858,7 +3811,7 @@ Tilemap:
       - {fileID: -1671729798, guid: cd051fe849dbf7448932ebc53374cb99, type: 3}
       - {fileID: 1319866322, guid: cd051fe849dbf7448932ebc53374cb99, type: 3}
       - {fileID: -2128110480, guid: cd051fe849dbf7448932ebc53374cb99, type: 3}
-      m_AnimationSpeed: 5
+      m_AnimationSpeed: 5.0000005
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 10, y: 0, z: 0}
@@ -3924,7 +3877,7 @@ Tilemap:
       - {fileID: -1230427915, guid: cd051fe849dbf7448932ebc53374cb99, type: 3}
       - {fileID: -1106006032, guid: cd051fe849dbf7448932ebc53374cb99, type: 3}
       - {fileID: -1500226787, guid: cd051fe849dbf7448932ebc53374cb99, type: 3}
-      m_AnimationSpeed: 5
+      m_AnimationSpeed: 5.0000005
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 12, y: 1, z: 0}
@@ -16164,7 +16117,6 @@ SceneRoots:
   - {fileID: 873241139397791255}
   - {fileID: 176351803}
   - {fileID: 1566568801}
-  - {fileID: 449810232}
   - {fileID: 1380132132}
   - {fileID: 2035724549}
   - {fileID: 245608614}

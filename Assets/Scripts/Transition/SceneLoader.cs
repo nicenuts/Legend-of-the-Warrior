@@ -7,7 +7,7 @@ using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.ResourceManagement.ResourceProviders;
 using UnityEngine.SceneManagement;
-public class SceneLoader : MonoBehaviour,ISaveable
+public class SceneLoader : MonoBehaviour, ISaveable
 {
     public Transform playerTrans;   //玩家坐标
     public Vector3 firstPosition;   //玩家初始坐标
@@ -19,13 +19,13 @@ public class SceneLoader : MonoBehaviour,ISaveable
 
     [Header("事件监听")]
     public SceneLoadEventSO LoadEventSO;   //场景加载事件
-    public VoidEventSO newGameEvent;   
-    public VoidEventSO backToEvent;
-    
+    public VoidEventSO newGameEvent;
+    public VoidEventSO backToMenuEvent;
+
 
     [Header("广播")]
     public VoidEventSO afterSceneLoadedEvent;
-    public FadeEventSO fadeEvent; 
+    public FadeEventSO fadeEvent;
     public SceneLoadEventSO unLoadedSceneEvent;
 
 
@@ -35,7 +35,7 @@ public class SceneLoader : MonoBehaviour,ISaveable
     public GameSceneSO currentLoadedScene;  //当前加载场景
     private GameSceneSO sceneToLoad;
 
-    
+
 
     private void Awake()
     {
@@ -55,7 +55,7 @@ public class SceneLoader : MonoBehaviour,ISaveable
     {
         LoadEventSO.LoadRequestEvent += OnLoadRequestEvent;
         newGameEvent.OnEventRaised += NewGame;
-        backToEvent.OnEventRaised += OnBackToEvent;
+        backToMenuEvent.OnEventRaised += OnBackToMenuEvent;
 
         ISaveable saveable = this;
         saveable.RegisterSaveData();   //注册
@@ -64,16 +64,16 @@ public class SceneLoader : MonoBehaviour,ISaveable
     {
         LoadEventSO.LoadRequestEvent -= OnLoadRequestEvent;
         newGameEvent.OnEventRaised -= NewGame;
-        backToEvent.OnEventRaised -= OnBackToEvent;
+        backToMenuEvent.OnEventRaised -= OnBackToMenuEvent;
 
         ISaveable saveable = this;
         saveable.UnregisterSaveData();   //注销
     }
 
-    private void OnBackToEvent()
+    private void OnBackToMenuEvent()
     {
         sceneToLoad = meauScene;
-        LoadEventSO.RaiseLoadRequestEvent(sceneToLoad,meauPosition,true);   //退回到菜单场景
+        LoadEventSO.RaiseLoadRequestEvent(sceneToLoad, meauPosition, true);   //退回到菜单场景
     }
 
     private void NewGame()
@@ -129,7 +129,7 @@ public class SceneLoader : MonoBehaviour,ISaveable
         yield return new WaitForSeconds(fadeDuration);
 
         //广播事件 调整血条显示
-        unLoadedSceneEvent.RaiseLoadRequestEvent(sceneToLoad,posotionToGo,true);
+        unLoadedSceneEvent.RaiseLoadRequestEvent(sceneToLoad, posotionToGo, true);
 
         currentLoadedScene.sceneReference.UnLoadScene();  //卸载场景
 
@@ -162,13 +162,13 @@ public class SceneLoader : MonoBehaviour,ISaveable
 
         isLoading = false;
 
-        if(currentLoadedScene.sceneType != SceneType.Menu)   //如果当前场景不是菜单
+        if (currentLoadedScene.sceneType != SceneType.Menu)   //如果当前场景不是菜单
             afterSceneLoadedEvent.RaiseEvent();  //场景加载完成后事件 如：获取新的摄像机的边界,更新人物和敌人的血量
     }
 
     public DataDefination GetDataID()
     {
-        return GetComponent<DataDefination>();   
+        return GetComponent<DataDefination>();
     }
 
     public void GetSaveData(Data data)
@@ -178,8 +178,8 @@ public class SceneLoader : MonoBehaviour,ISaveable
 
     public void LoadData(Data data)
     {
-        var playerID = playerTrans.GetComponent<DataDefination>().ID;
-        if(data.characterPosDict.ContainsKey(playerID))
+        var playerID = playerTrans.GetComponent<DataDefination>().ID;    //如果player的ID存在，则证明有Scene已保存
+        if (data.characterPosDict.ContainsKey(playerID))
         {
             posotionToGo = data.characterPosDict[playerID];
             sceneToLoad = data.GetSavedScene();

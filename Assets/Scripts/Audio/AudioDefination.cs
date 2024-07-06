@@ -10,14 +10,20 @@ public class AudioDefination : MonoBehaviour
 
     private void OnEnable()
     {
-        if(playOnEnable)
+        if (playOnEnable)
         {
-            PlayAudioClip();   
+            StartCoroutine(PlayBGMWithDelay());
         }
-    }  
+    }
     public void PlayAudioClip()  //播放音乐片段
     {
         playAudioEvent.RaiseEvent(audioClip);   //呼叫
+    }
+
+    IEnumerator PlayBGMWithDelay()
+    {
+        yield return new WaitForSeconds(2.0f); // 等待2秒钟，音频系统需要准备时间
+        PlayAudioClip();
     }
 
 }

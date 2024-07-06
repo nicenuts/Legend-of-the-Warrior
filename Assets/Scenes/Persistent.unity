@@ -574,7 +574,7 @@ MonoBehaviour:
   fadeDuration: 0.5
   LoadEventSO: {fileID: 11400000, guid: e8669e98641cf5e4a9b5d6cc31f21af4, type: 2}
   newGameEvent: {fileID: 11400000, guid: 1b7781d7743644d44899fe0214590df8, type: 2}
-  backToEvent: {fileID: 11400000, guid: d30eee6c2e884c24db93014bc229e7ad, type: 2}
+  backToMenuEvent: {fileID: 11400000, guid: d30eee6c2e884c24db93014bc229e7ad, type: 2}
   afterSceneLoadedEvent: {fileID: 11400000, guid: 64b2d52e5acb1bf4d98171ff12230896, type: 2}
   fadeEvent: {fileID: 11400000, guid: 93770323ad9cf304fb136142d68a6817, type: 2}
   unLoadedSceneEvent: {fileID: 11400000, guid: e832b06844121774faa0edd8307627a1, type: 2}
@@ -975,6 +975,53 @@ Transform:
   - {fileID: 1882328556}
   - {fileID: 500987646}
   m_Father: {fileID: 2132653122}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &449810230
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 449810232}
+  - component: {fileID: 449810231}
+  m_Layer: 0
+  m_Name: BGM
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &449810231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 449810230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4cb3699f307aac4a96a1c86b76589fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playAudioEvent: {fileID: 11400000, guid: 2f02a41debfd9ce4399a3afb1b866fbb, type: 2}
+  audioClip: {fileID: 8300000, guid: b90b002a8cd137243a4b5e955f3b220f, type: 3}
+  playOnEnable: 1
+--- !u!4 &449810232
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 449810230}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &469524892
 GameObject:
@@ -1955,8 +2002,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1445520037}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.288, y: 0}
-  m_AnchorMax: {x: 0.288, y: 1}
+  m_AnchorMin: {x: 0.885, y: 0}
+  m_AnchorMax: {x: 0.885, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2950,7 +2997,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.288
+  m_Value: 0.885
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -3937,7 +3984,7 @@ RectTransform:
   m_Father: {fileID: 8229228}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.288, y: 1}
+  m_AnchorMax: {x: 0.885, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4474,7 +4521,8 @@ SceneRoots:
   - {fileID: 119878404}
   - {fileID: 619394802}
   - {fileID: 2083863592}
+  - {fileID: 449810232}
   - {fileID: 730423764}
   - {fileID: 2132653122}
-  - {fileID: 1380132132}
   - {fileID: 1935983148}
+  - {fileID: 1380132132}
